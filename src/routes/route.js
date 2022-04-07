@@ -1,29 +1,71 @@
 const express = require('express');
-const logger = require('./logger')
+
 
 const router = express.Router();
 
 
 
-router.get('/candidates', function (req, res) {
+router.get('/movies', function (req, res) {
 
-    let candidates = ['A','B','C','D','E','F','G','H','I','J'];
-    // console.log(candidates);
-    
-    // console.log(req)
+    let a = ['rang de basnasti', 'the shining', 'lord of the rings', 'batman begins'];
 
-//    console.log(req.candidates); 
+    res.send( a )
+
     
-    // console.log('------------------')
-    
-    // console.log('------------------')
-    
-    res.send(candidates)
 
 });
 
 
 
+router.get('/movies/:indexNumber', function (req, res){
+    
+   let a = ['rang de basnasti', 'the shining', 'lord of the rings', 'batman begins'];
+   let listt = a.length;
 
-module.exports = router;
+   const index = req.params.indexNumber;
+
+   if ( index > listt) {
+
+        res.send('Please check the number you have enterd')
+       
+   } else {
+
+        res.send(`The movie is ${a[index]}`)
+       
+   }
+});
+
+
+router.get('/films', function (req, res){
+
+    let movieObject = [
+
+        {
+            "id":1,
+            "name":"rand de basanti"
+
+        },
+        {
+            "id":2,
+            "name":"the shining"
+        },
+        {
+            "id":3,
+            "name":"lord of the rings"
+        },
+        {
+            "id":4,
+            "name":"bat man begins"
+        }
+
+    ]
+
+    res.send(movieObject)
+
+});
+
+
+
+module.exports = router;4
+
 // adding this comment for no reason
