@@ -92,7 +92,7 @@ const getBooksInYear = async function (req, res) {
 }
 
 const getXINRBooks = async function (req, res) {
-    let allBooks = await BookModel.find({})
+    let allBooks = await BookModel.find({'prices.indianPrice':{$in:["100INR", "200INR", "500INR"]}})
     res.send({msg: allBooks})   
 }
 
