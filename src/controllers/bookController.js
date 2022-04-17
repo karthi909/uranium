@@ -67,7 +67,7 @@ const books = async function (req, res) {
 
         
     }
-    res.send({msg: result});
+    res.send({msg: result, books});
     
 }
 
