@@ -33,6 +33,6 @@ const createOrder = async function (req, res) {
     }
     
 
-}
+};
 
 module.exports.createOrder=createOrder
