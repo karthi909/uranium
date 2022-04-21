@@ -9,12 +9,14 @@ const createOrder = async function (req, res) {
         let product = await productModel.findById(data.productId);
         if(product){
             if(req.header.isfreeappuser== 'true'){
+                console.log('true')
                 data['amount']=0;
                 data['isFreeAppUser']=req.headers.isfreeappuser;
                 let newData= await orderModel.create(data);
                 res.send({msg: newData});
             } else{
                 if(user.balance>=product.price){
+                    console.log('false')
                     await userModel.findOneAndUpdate({_id: data.userId}, {$set: {balance: user.balance-product.price}});
                     data['amount']=product.price;
                     data['isFreeAppUser']=req.headers.isfreeappuser;
@@ -36,3 +38,6 @@ const createOrder = async function (req, res) {
 };
 
 module.exports.createOrder=createOrder
+
+
+// user.balance>=product.price
